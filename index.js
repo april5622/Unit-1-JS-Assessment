@@ -30,7 +30,7 @@ function getName(character) {
  */
 function getFilmCount(character) {
   // TODO: Add your code inside the functions (others below).
-
+  return character.films.length;
 }
 
 /**
@@ -43,6 +43,11 @@ function getFilmCount(character) {
 */
 function getSecondStarshipName(character) {
   // TODO: Add your code here.
+  if (character.starships.length === 0) {
+    return "none";
+  } else {
+    return character.starships[1].name;
+  }
 }
 
 /**
@@ -56,6 +61,7 @@ function getSecondStarshipName(character) {
  */
 function getSummary(character) {
   // TODO: Add your code here.
+  return `${character.name}, ${character.height}cm, ${character.mass}kg. Featured in ${character.films.length} films.`;
 }
 
 /**
@@ -68,6 +74,9 @@ function getSummary(character) {
 */
 function getVehiclesCostInCreditsSumTotal(character) {
   // TODO: Add your code here.
+  return character.vehicles.reduce((acc, curr) => {
+    return acc + curr.cost_in_credits;
+  }, 0);
 }
 
 /**
@@ -82,6 +91,9 @@ function getVehiclesCostInCreditsSumTotal(character) {
 */
 function getStarshipPassengerAndCrewSumTotal(character) {
   // TODO: Add your code here.
+  return character.starships.reduce ((acc, curr) => {
+    return acc + curr.crew + curr.passengers;
+  }, 0);
 }
 
 /**
@@ -99,7 +111,14 @@ function getStarshipPassengerAndCrewSumTotal(character) {
 */
 function getNthFilm(character, filmNumber) {
   // TODO: Add your code here.
+
+  if (filmNumber > 0 && filmNumber<=3){
+    let film = character.films[filmNumber-1]
+    return film;
+  } 
+    return `There are only 3 Star Wars movies. Flan fiction excluded.`
 }
+
 
 /**
  * ### Challenge `getCargoCapacityTotal`
@@ -113,6 +132,9 @@ function getNthFilm(character, filmNumber) {
 */
 function getCargoCapacityTotal(character) {
   // TODO: Add your code here.
+  return character.cargo_capacity.reduce((acc, curr) => {
+    return acc + curr.starships + curr.vehicles;
+  }, 0);
 }
 
 /**
